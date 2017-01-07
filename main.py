@@ -27,16 +27,17 @@ from keras.layers import Conv2D, Flatten
 from keras.optimizers import SGD, Adam, RMSprop
 from keras.utils import np_utils
 from keras.layers.pooling import MaxPooling2D
-
-
-# read the data file
-with open('train.p', 'rb') as f:
-    data = pickle.load(f)
+from keras.datasets import cifar10
 
 def main():
     # split the dataset
-    X_train, X_val, y_train, y_val = train_test_split(
-        data['features'], data['labels'], test_size=0.33, random_state=42)
+    # X_train, X_val, y_train, y_val = train_test_split(
+    #     data['features'], data['labels'], test_size=0.33, random_state=42)
+
+    # read the data file
+    # with open('train.p', 'rb') as f:
+    #     data = pickle.load(f)
+    (X_train, y_train), (X_val, y_val) = cifar10.load_data()
 
     # data normalization
     X_train = X_train.astype('float32')
@@ -45,7 +46,7 @@ def main():
     X_val = X_val / 255 - 0.5
 
     # define the model
-    batch_size = 128
+    batch_size = 32
     n_epochs = 20
 
     Y_train = np_utils.to_categorical(y_train, 43)
