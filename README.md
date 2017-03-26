@@ -15,3 +15,7 @@ The architecture is a fairly straghtforward CNN, using pooling and dropout.  For
 model in Tensorflow, see:
 
 >https://github.com/robertcrowe/TrafficSigns
+
+Keras is a nice layer on top of Tensorflow, especially for prototyping or roughing out an approach.  The performance
+penalty is minimal, and the abstraction is just right for controlling important things like early stopping while
+leaving the code concise and clear.  I'm a fan.
